@@ -19,15 +19,15 @@
         {{#card.title as |title|}}
         {{/card.title}}
         {{#card.content}}
-          {{#leaflet-map lat=lat lng=lng zoom=zoom}}
-            {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
-            {{#marker-layer location=emberConfLocation}}
-              {{#popup-layer}}
+          {{#leaflet-map lat=lat lng=lng zoom=zoom class="flex" as |layers|}}
+            {{layers.title url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+            {{#layers.marker location=emberConfLocation as |marker|}}
+              {{#marker.popup}}
                 <h3>The Oregon Convention Center</h3>
                 777 NE Martin Luther King Jr Blvd<br>
                 Portland, OR 97232
-              {{/popup-layer}}
-            {{/marker-layer}}
+              {{/marker.popup}}
+            {{/layers.marker}}
           {{/leaflet-map}}
           <p>
             Please visit us at 4240 W. Flamingo Road No. 100, Las Vegas, NV 89103
