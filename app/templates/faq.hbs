@@ -1,0 +1,19 @@
+{{#paper-card-content class="flex"}}
+  {{#paper-toolbar}}
+    {{#paper-toolbar-tools}}
+      {{#paper-sidenav-toggle name="left" as |toggleAction|}}
+        {{#paper-button iconButton=true classNames="hide-gt-sm" onClick=(action toggleAction)}}
+          {{paper-icon "menu"}}
+        {{/paper-button}}
+      {{/paper-sidenav-toggle}}
+      <h2>
+        FAQ
+      </h2>
+      <span class="flex"></span>
+    {{/paper-toolbar-tools}}
+  {{/paper-toolbar}}
+
+  <div class="layout-fill layout-align-start-center layout-column" style="height: 500px">
+    <h1>FAQ</h1>
+  </div>
+{{/paper-card-content}}

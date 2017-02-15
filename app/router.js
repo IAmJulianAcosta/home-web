@@ -7,6 +7,17 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('menu');
+  this.route('location-and-hours');
+  this.route('our-story');
+  this.route('deliveries');
+  this.route('clinical-trials');
+  this.route('craft-cannibus');
+  this.route('soothing-remedies');
+  this.route('specials');
+  this.route('patients');
+  this.route('gallery');
+  this.route('faq');
 });
 
 export default Router;
