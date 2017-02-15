@@ -3,7 +3,7 @@
    name="left"
    open=leftSideBarOpen
    onToggle=(action (mut leftSideBarOpen))}}
-  {{#paper-toolbar as |toolbar|}}
+  {{#paper-toolbar tall=true}}
     {{#paper-toolbar-tools class="toolbar-title"}}
       {{#link-to 'index'}}
         The Apothecary Shoppe
@@ -11,10 +11,12 @@
     {{/paper-toolbar-tools}}
   {{/paper-toolbar}}
   {{#paper-list}}
-    {{#paper-item class='menu-list-item'}}
-      {{#paper-content padding=true}}
-        {{link-to 'Menu' 'menu'}}
-      {{/paper-content}}
+    {{currentRouteName}}
+    {{#paper-item
+       active=(is-active "menu" currentRouteName)
+       onClick=(transition-to "menu")
+       class=(concat "menu-list-item" (if active ' active'))}}
+      Menu
     {{/paper-item}}
     {{#paper-item class='menu-list-item'}}
       {{#paper-content padding=true}}

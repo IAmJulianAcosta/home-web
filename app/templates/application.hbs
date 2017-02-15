@@ -1,1 +1,76 @@
-{{outlet}}
+{{#paper-sidenav-container class="inner-sidenav"}}
+  {{#paper-sidenav
+     class="md-whiteframe-z2 side-navigation"
+     name="left"
+     open=leftSideBarOpen
+     onToggle=(action (mut leftSideBarOpen))}}
+    {{#paper-toolbar tall=true}}
+      {{#paper-toolbar-tools class="toolbar-title"}}
+        {{#link-to 'index'}}
+          The Apothecary Shoppe
+        {{/link-to}}
+      {{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+    {{#paper-list}}
+      {{#paper-item
+         onClick=(transition-to "menu")
+         class=(concat "menu-list-item" (if (eq "menu" currentRouteName) ' active'))}}
+        Menu
+      {{/paper-item}}
+      {{#paper-item
+         onClick=(transition-to "location-and-hours")
+         class=(concat "menu-list-item" (if (eq "location-and-hours" currentRouteName) ' active'))}}
+        Location and Hours
+      {{/paper-item}}
+      {{#paper-item
+         onClick=(transition-to "our-story")
+         class=(concat "menu-list-item" (if (eq "our-story" currentRouteName) ' active'))}}
+        Our Story
+      {{/paper-item}}
+      {{#paper-item
+         onClick=(transition-to "deliveries")
+         class=(concat "menu-list-item" (if (eq "deliveries" currentRouteName) ' active'))}}
+        Deliveries
+      {{/paper-item}}
+      {{#paper-item
+         onClick=(transition-to "clinical-trials")
+         class=(concat "menu-list-item" (if (eq "clinical-trials" currentRouteName) ' active'))}}
+        Clinical Trials
+      {{/paper-item}}
+      {{#paper-item
+         onClick=(transition-to "craft-cannibus")
+         class=(concat "menu-list-item" (if (eq "craft-cannibus" currentRouteName) ' active'))}}
+        Craft Cannibus
+      {{/paper-item}}
+      {{#paper-item
+         onClick=(transition-to "soothing-remedies")
+         class=(concat "menu-list-item" (if (eq "soothing-remedies" currentRouteName) ' active'))}}
+        Soothing Remedies
+      {{/paper-item}}
+      {{#paper-item
+         onClick=(transition-to "specials")
+         class=(concat "menu-list-item" (if (eq "specials" currentRouteName) ' active'))}}
+        Specials
+      {{/paper-item}}
+      {{#paper-item
+         onClick=(transition-to "patients")
+         class=(concat "menu-list-item" (if (eq "patients" currentRouteName) ' active'))}}
+        Patients
+      {{/paper-item}}
+      {{#paper-item
+         onClick=(transition-to "gallery")
+         class=(concat "menu-list-item" (if (eq "gallery" currentRouteName) ' active'))}}
+        Gallery
+      {{/paper-item}}
+      {{#paper-item
+         onClick=(transition-to "faq")
+         class=(concat "menu-list-item" (if (eq "faq" currentRouteName) ' active'))}}
+        FAQ
+      {{/paper-item}}
+    {{/paper-list}}
+  {{/paper-sidenav}}
+
+  {{#paper-card-content class="flex"}}
+    {{outlet}}
+  {{/paper-card-content}}
+{{/paper-sidenav-container}}
