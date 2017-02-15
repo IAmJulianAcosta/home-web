@@ -1,0 +1,42 @@
+{{#paper-sidenav
+   class="md-whiteframe-z2"
+   name="left"
+   open=leftSideBarOpen
+   onToggle=(action (mut leftSideBarOpen))}}
+  {{#paper-toolbar as |toolbar|}}
+    {{#paper-toolbar-tools}}The Apothecary Shoppe{{/paper-toolbar-tools}}
+  {{/paper-toolbar}}
+  {{#paper-content padding=true}}
+    {{link-to 'Menu' 'menu'}}
+  {{/paper-content}}
+  {{#paper-content padding=true}}
+    {{link-to 'Location and Hours' 'location-and-hours'}}
+  {{/paper-content}}
+  {{#paper-content padding=true}}
+    {{link-to 'Our Story' 'our-story'}}
+  {{/paper-content}}
+  {{#paper-content padding=true}}
+    {{link-to 'Deliveries' 'deliveries'}}
+  {{/paper-content}}
+  {{#paper-content padding=true}}
+    {{link-to 'Clinical Trials' 'clinical-trials'}}
+  {{/paper-content}}
+  {{#paper-content padding=true}}
+    {{link-to 'Craft Cannibus' 'craft-cannibus'}}
+  {{/paper-content}}
+  {{#paper-content padding=true}}
+    {{link-to 'Soothing Remedies' 'soothing-remedies'}}
+  {{/paper-content}}
+  {{#paper-content padding=true}}
+    {{link-to 'Specials' 'specials'}}
+  {{/paper-content}}
+  {{#paper-content padding=true}}
+    {{link-to 'Patients' 'patients'}}
+  {{/paper-content}}
+  {{#paper-content padding=true}}
+    {{link-to 'Gallery' 'gallery'}}
+  {{/paper-content}}
+  {{#paper-content padding=true}}
+    {{link-to 'FAQ' 'faq'}}
+  {{/paper-content}}
+{{/paper-sidenav}}
