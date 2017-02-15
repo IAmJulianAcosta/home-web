@@ -10,7 +10,7 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  // this.render(hbs`{{side-navigation}}`);
+  this.render(hbs`{{side-navigation}}`);
 
-  // assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$('.toolbar-title').text().trim(), 'The Apothecary Shoppe');
 });

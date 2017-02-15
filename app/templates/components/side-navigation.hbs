@@ -4,9 +4,11 @@
    open=leftSideBarOpen
    onToggle=(action (mut leftSideBarOpen))}}
   {{#paper-toolbar as |toolbar|}}
-    {{#link-to 'index'}}
-      {{#paper-toolbar-tools}}The Apothecary Shoppe{{/paper-toolbar-tools}}
-    {{/link-to}}
+    {{#paper-toolbar-tools class="toolbar-title"}}
+      {{#link-to 'index'}}
+        The Apothecary Shoppe
+      {{/link-to}}
+    {{/paper-toolbar-tools}}
   {{/paper-toolbar}}
   {{#paper-content padding=true}}
     {{link-to 'Menu' 'menu'}}
