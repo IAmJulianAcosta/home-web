@@ -3,6 +3,25 @@
 This README outlines the details of collaborating on this Ember application.
 A short introduction of this app could easily go here.
 
+## DevOps
+
+The ``setup.yaml`` template contains the CloudFormation template necessary to
+spin up the following:
+
+* An S3 Bucket for the staging/production version
+* A Route 53 DNS record for staging.theshoppe.vegas and
+  www.theshoppe.vegas
+* SSL certs for each domain name
+
+> [This template must be run in the ``us-east-1`` region!](https://cloudonaut.io/pitfall-acm-certificate-cloudfront-cloudformation/)
+
+```bash
+aws cloudformation create-stack --stack-name the-shoppe-web \
+  --template-body file://setup.yaml \
+  --region us-east-1 \
+  --capabilities CAPABILITY_NAMED_IAM
+```
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
