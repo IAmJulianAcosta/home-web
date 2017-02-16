@@ -13,7 +13,31 @@
     {{/paper-toolbar-tools}}
   {{/paper-toolbar}}
 
-  <div class="layout-fill layout-align-start-center layout-column" style="height: 500px">
-    <h1>Our Story</h1>
+  <div class="layout-row layout-xs-column">
+    <div class="flex">
+      {{#paper-card as |card|}}
+        {{#card.title as |title|}}
+          <h3>
+            A Positive Cannibus Culture
+          </h3>
+        {{/card.title}}
+        {{#card.content}}
+          <p>
+            The Apothecary Shoppe in Las Vegas is more than a cannabis
+            dispensary. We believe in a higher purpose, one devoted to the
+            well-being of our community and to the creation of a positive
+            cannabis culture in Nevada. That purpose includes being on the
+            vanguard of research – giving our doctors, concierges and you the
+            greatest insight into the incredible benefits of medicinal cannabis.
+            That insight will guide the way to making this natural medicine a
+            proven, safe and legal alternative treatment for patients
+            everywhere. All this, together with our state-of-the-art grow house,
+            unique products and homemade gourmet edibles raises the standard by
+            which every other cannabis dispensary will be measured.
+          </p>
+
+        {{/card.content}}
+      {{/paper-card}}
+    </div>
   </div>
 {{/paper-card-content}}

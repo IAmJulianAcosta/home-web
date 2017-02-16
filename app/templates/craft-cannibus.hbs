@@ -13,7 +13,25 @@
     {{/paper-toolbar-tools}}
   {{/paper-toolbar}}
 
-  <div class="layout-fill layout-align-start-center layout-column" style="height: 500px">
-    <h1>Craft Cannibus</h1>
+  <div class="layout-row layout-xs-column">
+    <div class="flex">
+      {{#paper-card as |card|}}
+        {{#card.title as |title|}}
+          <h3>
+            Craft Cannibus
+          </h3>
+        {{/card.title}}
+        {{#card.content}}
+          <p>
+            As curators in the science of horticulture and craft cannabis, our
+            growers work tirelessly to provide our patients with pure, safe and
+            healthy cannabis flower. Our facility uses no pesticides and fully
+            protects the plants from the harsh desert climate. This carefully
+            monitored environment means bigger, denser buds, increased potency and
+            higher resin yields.
+          </p>
+        {{/card.content}}
+      {{/paper-card}}
+    </div>
   </div>
 {{/paper-card-content}}
