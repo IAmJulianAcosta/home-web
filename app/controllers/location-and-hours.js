@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  lat: 45.519743,
-  lng: -122.680522,
+  lat: 36.116026,
+  lng: -115.196742,
   zoom: 10,
-  emberConfLocation: [45.528298, -122.662986]
+  emberConfLocation: [36.116026, -115.196742]
 });
