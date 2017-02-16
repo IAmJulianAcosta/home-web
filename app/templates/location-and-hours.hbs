@@ -13,7 +13,32 @@
     {{/paper-toolbar-tools}}
   {{/paper-toolbar}}
 
-  <div class="layout-fill layout-align-start-center layout-column" style="height: 500px">
-    <h1>Location and Hours</h1>
+  <div class="layout-row layout-xs-column">
+    <div class="flex">
+      {{#paper-card as |card|}}
+        {{#card.title as |title|}}
+        {{/card.title}}
+        {{#card.content}}
+          {{#leaflet-map lat=lat lng=lng zoom=zoom}}
+            {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+            {{#marker-layer location=emberConfLocation}}
+              {{#popup-layer}}
+                <h3>The Apothecary Shoppe</h3>
+                4240 W. Flamingo Road No. 100
+                <br>
+                Las Vegas, NV 89103
+              {{/popup-layer}}
+            {{/marker-layer}}
+          {{/leaflet-map}}
+          <p>
+            Please visit us at 4240 W. Flamingo Road No. 100, Las Vegas, NV 89103
+          </p>
+        {{/card.content}}
+        {{#card.actions}}
+          {{#paper-button}}Call Us{{/paper-button}}
+          {{#paper-button}}Email Us{{/paper-button}}
+        {{/card.actions}}
+      {{/paper-card}}
+    </div>
   </div>
 {{/paper-card-content}}
