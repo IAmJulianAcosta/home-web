@@ -1,5 +1,6 @@
 {
   "name": "home-web",
   "dependencies": {
+    "leaflet": "^1.0.0"
   }
 }
