@@ -13,7 +13,33 @@
     {{/paper-toolbar-tools}}
   {{/paper-toolbar}}
 
-  <div class="layout-fill layout-align-start-center layout-column" style="height: 500px">
-    <h1>Deliveries</h1>
+  <div class="layout-row layout-xs-column">
+    <div class="flex">
+      {{#paper-card as |card|}}
+        {{#card.title as |title|}}
+          <h3>
+            Deliveries
+          </h3>
+        {{/card.title}}
+        {{#card.content}}
+          <p>
+            The Apothecary Shoppe is pleased to offer complimentary
+            climate-controlled delivery on orders of $100 or more. Please fill
+            out the below form and we will call you when your curatives are on
+            the way and when we arrive. A $5 delivery fee will be added for
+            orders under $100. Delivery hours are daily from 9:00 AM to 9:00 PM,
+            Please select a date below and we will call to schedule a best time
+            for you on that date.
+          </p>
+        {{/card.content}}
+        {{#card.actions}}
+          <a href="tel:17027404372">
+            {{#paper-button}}
+              Call Us to Schedule a Delivery
+            {{/paper-button}}
+          </a>
+        {{/card.actions}}
+      {{/paper-card}}
+    </div>
   </div>
 {{/paper-card-content}}

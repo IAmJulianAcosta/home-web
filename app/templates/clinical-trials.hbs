@@ -13,7 +13,49 @@
     {{/paper-toolbar-tools}}
   {{/paper-toolbar}}
 
-  <div class="layout-fill layout-align-start-center layout-column" style="height: 500px">
-    <h1>Clinical Trials</h1>
+  <div class="layout-row layout-xs-column">
+    <div class="flex">
+      {{#paper-card as |card|}}
+        {{#card.title as |title|}}
+          <h3>
+            Clinical Trials
+          </h3>
+        {{/card.title}}
+        {{#card.content}}
+          <p>
+            Cannabis clinical trials lie at the heart of our mission, and The
+            Apothecary Shoppe is the only dispensary in Las Vegas overseeing a
+            range of unprecedented clinical trials in cannabis-based therapies.
+            Our team of physicians, led by Dr. Nick Spirtos, specialize in a
+            spectrum of medical conditions ranging from cancer to pain and
+            seizures. Our goal is to reduce opiate addiction and the side effects
+            of current medication used to treat these conditions.
+          </p>
+          <p>
+            The trials will record results from patients dealing with chronic pain
+            and cancer. Dr. Spirtos is particularly interested in those going
+            through chemotherapy. Many patients do not finish their recommended
+            chemotherapy regimen due to the side effects, mainly nausea and
+            vomiting. By reducing these side effects with medicinal cannabis, more
+            might be willing to finish their chemotherapy. You can follow our
+            doctors’ progress, as well as learn more about cannabis clinical
+            research around the globe, in our social media community on Facebook,
+            Twitter and Instagram.
+          </p>
+          <p>
+            If you are interested in learning more about our cannabis clinical
+            trials or would like to see how you can get involved, please fill and
+            submit the from below.
+          </p>
+        {{/card.content}}
+        {{#card.actions}}
+          <a href="mailto:info@theapothecaryshoppe.com">
+            {{#paper-button}}
+              Email us for more information
+            {{/paper-button}}
+          </a>
+        {{/card.actions}}
+      {{/paper-card}}
+    </div>
   </div>
 {{/paper-card-content}}
