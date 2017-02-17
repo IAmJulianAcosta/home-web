@@ -18,6 +18,7 @@ Router.map(function() {
   this.route('patients');
   this.route('gallery');
   this.route('faq');
+  this.route('intake');
 });
 
 export default Router;
