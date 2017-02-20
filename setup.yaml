@@ -8,12 +8,12 @@ Parameters:
   DomainName:
     Description: Naked Domain, this needs to be verified on Route 53 first.
     Type: String
-    Default: theshoppe.vegas
+    Default: theapothecaryshoppe.com
 
   DasherizedName:
     Description: Dasherized name to prefix S3 buckets with
     Type: String
-    Default: the-shoppe
+    Default: the-apothecary-shoppe
 
 Resources:
   StagingSSLCertificate: 
