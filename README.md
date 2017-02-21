@@ -16,7 +16,7 @@ spin up the following:
 > [This template must be run in the ``us-east-1`` region!](https://cloudonaut.io/pitfall-acm-certificate-cloudfront-cloudformation/)
 
 ```bash
-aws cloudformation create-stack --stack-name the-shoppe-web \
+aws cloudformation create-stack --stack-name the-apothecary-shoppe-web \
   --template-body file://setup.yaml \
   --region us-east-1 \
   --capabilities CAPABILITY_NAMED_IAM

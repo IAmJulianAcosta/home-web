@@ -29,7 +29,7 @@ Resources:
   CIUser:
     Type: AWS::IAM::User
     Properties:
-      UserName: ci-home-web
+      UserName: ci-the-apothecary-shoppehome-web
       Policies:
         - PolicyName: ci-home-web
           PolicyDocument:
