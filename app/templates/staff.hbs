@@ -1,0 +1,48 @@
+{{#paper-card-content class="flex"}}
+  {{#paper-toolbar}}
+    {{#paper-toolbar-tools}}
+      {{#paper-sidenav-toggle name="left" as |toggleAction|}}
+        {{#paper-button iconButton=true classNames="hide-gt-sm" onClick=(action toggleAction)}}
+          {{paper-icon "menu"}}
+        {{/paper-button}}
+      {{/paper-sidenav-toggle}}
+      <h2>
+        Menu
+      </h2>
+      <span class="flex"></span>
+    {{/paper-toolbar-tools}}
+  {{/paper-toolbar}}
+
+  <div class="layout-row layout-xs-column">
+    <div class="flex-gt-xs-33">
+      {{#paper-card as |card|}}
+        {{#card.title}}
+          <h3>
+            Fancy
+          </h3>
+        {{/card.title}}
+        {{card.media src="/assets/images/fancy.jpg"}}
+        {{#card.content}}
+          Fancy is our lead congierge. He can be simply described the most dapper man in the
+          marijuana industry. He provides decades of knowledge stretching from
+          Ohio to Vegas and knows very well how the herb heals.
+        {{/card.content}}
+      {{/paper-card}}
+    </div>
+    <div class="flex-gt-xs-33">
+      {{#paper-card as |card|}}
+        {{#card.title}}
+          <h3>
+            Andrea
+          </h3>
+        {{/card.title}}
+        {{card.media src="/assets/images/andrea.jpg"}}
+        {{#card.content}}
+          Fancy is our lead congierge. He can be simply described the most dapper man in the
+          marijuana industry. He provides decades of knowledge stretching from
+          Ohio to Vegas and knows very well how the herb heals.
+        {{/card.content}}
+      {{/paper-card}}
+    </div>
+  </div>
+{{/paper-card-content}}
