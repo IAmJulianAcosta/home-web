@@ -1,6 +1,7 @@
 {
   "name": "home-web",
   "dependencies": {
-    "leaflet": "^1.0.0"
+    "leaflet": "^1.0.0",
+    "photoswipe": "4.1.0"
   }
 }

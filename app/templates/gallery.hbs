@@ -7,16 +7,19 @@
         {{/paper-button}}
       {{/paper-sidenav-toggle}}
       <h2>
-        Menu
+        Gallery
       </h2>
       <span class="flex"></span>
     {{/paper-toolbar-tools}}
   {{/paper-toolbar}}
 
   <div class="layout-row layout-xs-column">
-    <div class="flex">
+    <div class="flex gallery">
       {{#paper-card as |card|}}
         {{#card.content}}
+          {{#photo-swipe items=model as |img|}}
+            <img class="thumb" src={{img.src}} alt={{img.title}}>
+          {{/photo-swipe}}
         {{/card.content}}
       {{/paper-card}}
     </div>
