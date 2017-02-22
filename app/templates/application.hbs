@@ -48,14 +48,9 @@
         Soothing Remedies
       {{/paper-item}}
       {{#paper-item
-         onClick=(transition-to "specials")
-         class=(concat "menu-list-item" (if (eq "specials" currentRouteName) ' active'))}}
-        Specials
-      {{/paper-item}}
-      {{#paper-item
-         onClick=(transition-to "patients")
-         class=(concat "menu-list-item" (if (eq "patients" currentRouteName) ' active'))}}
-        Patients
+         onClick=(transition-to "staff")
+         class=(concat "menu-list-item" (if (eq "staff" currentRouteName) ' active'))}}
+        Staff
       {{/paper-item}}
       {{#paper-item
          onClick=(transition-to "gallery")

@@ -19,6 +19,7 @@ Router.map(function() {
   this.route('gallery');
   this.route('faq');
   this.route('intake');
+  this.route('staff');
 });
 
 export default Router;
