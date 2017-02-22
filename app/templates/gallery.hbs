@@ -7,13 +7,18 @@
         {{/paper-button}}
       {{/paper-sidenav-toggle}}
       <h2>
-        Gallery
+        Menu
       </h2>
       <span class="flex"></span>
     {{/paper-toolbar-tools}}
   {{/paper-toolbar}}
 
-  <div class="layout-fill layout-align-start-center layout-column" style="height: 500px">
-    <h1>Gallery</h1>
+  <div class="layout-row layout-xs-column">
+    <div class="flex">
+      {{#paper-card as |card|}}
+        {{#card.content}}
+        {{/card.content}}
+      {{/paper-card}}
+    </div>
   </div>
 {{/paper-card-content}}
