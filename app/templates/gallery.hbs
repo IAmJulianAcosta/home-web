@@ -13,7 +13,15 @@
     {{/paper-toolbar-tools}}
   {{/paper-toolbar}}
 
-  <div class="layout-fill layout-align-start-center layout-column" style="height: 500px">
-    <h1>Gallery</h1>
+  <div class="layout-row layout-xs-column">
+    <div class="flex gallery">
+      {{#paper-card as |card|}}
+        {{#card.content}}
+          {{#photo-swipe items=model as |img|}}
+            <img class="thumb" src={{img.src}} alt={{img.title}}>
+          {{/photo-swipe}}
+        {{/card.content}}
+      {{/paper-card}}
+    </div>
   </div>
 {{/paper-card-content}}
