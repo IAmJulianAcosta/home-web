@@ -23,9 +23,28 @@
         {{/card.title}}
         {{card.media src="/assets/images/fancy.jpg"}}
         {{#card.content}}
-          Fancy is our lead congierge. He can be simply described the most dapper man in the
-          marijuana industry. He provides decades of knowledge stretching from
-          Ohio to Vegas and knows very well how the herb heals.
+          Fancy is our lead congierge. He can be simply described the most
+          dapper man in the marijuana industry. He provides decades of knowledge
+          stretching from Ohio to Vegas and knows very well how the herb heals.
+        {{/card.content}}
+      {{/paper-card}}
+    </div>
+    <div class="flex-gt-xs-33">
+      {{#paper-card as |card|}}
+        {{#card.title as |title|}}
+          {{#title.text}}
+            <h3>
+              Andrea
+            </h3>
+          {{/title.text}}
+        {{/card.title}}
+        {{card.media src="/assets/images/andrea.jpg"}}
+        {{#card.content}}
+          Andrea is our product manager. Andrea takes on the toughest problems
+          of the business, what our dispensary stocks, and what our grow and
+          cultivation produces. She ensures that our Shoppe not only features
+          our own hard work, but also be a reflection of the finest cannibus
+          products in Nevada.
         {{/card.content}}
       {{/paper-card}}
     </div>
@@ -33,14 +52,13 @@
       {{#paper-card as |card|}}
         {{#card.title}}
           <h3>
-            Andrea
+            Sara
           </h3>
         {{/card.title}}
-        {{card.media src="/assets/images/andrea.jpg"}}
+        {{card.media src="/assets/images/sara.jpg"}}
         {{#card.content}}
-          Fancy is our lead congierge. He can be simply described the most dapper man in the
-          marijuana industry. He provides decades of knowledge stretching from
-          Ohio to Vegas and knows very well how the herb heals.
+          Sara is a receptionist at the Shoppe. She had never tried marijuana
+          before until later in life, and enjoys its calming and relaxing effects.
         {{/card.content}}
       {{/paper-card}}
     </div>
