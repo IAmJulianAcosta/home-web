@@ -14,17 +14,21 @@
   {{/paper-toolbar}}
 
   <div class="layout-row layout-xs-column">
-    <div class="flex">
+    <div class="flex image-card">
       {{#paper-card as |card|}}
         {{#card.title as |title|}}
-          <h3>
-            Soothing Remedies
-          </h3>
+          <div class="flex-50">
+            {{#title.text}}
+              <h3>
+                March
+              </h3>
+            {{/title.text}}
+          </div>
+          {{title.media class="full-width" src="/assets/images/march-sooting-remedies.png"}}
         {{/card.title}}
         {{#card.content}}
           <p>
-            We make hand creams, lotions, and other products that target all types
-            of ailments.
+            Coming soon, green is the theme for March.
           </p>
         {{/card.content}}
       {{/paper-card}}
