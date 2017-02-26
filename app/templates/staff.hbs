@@ -13,7 +13,7 @@
     {{/paper-toolbar-tools}}
   {{/paper-toolbar}}
 
-  <div class="layout-row layout-xs-column">
+  <div class="layout-row layout-wrap">
     <div class="flex-gt-xs-33">
       {{#paper-card as |card|}}
         {{#card.title}}
@@ -82,6 +82,27 @@ href="https://twitter.com/cavs">Cavs</a> finally won a ring with the king.
             High</a>, <a
             href="http://www.imdb.com/title/tt0113118">Friday</a>, and <a
                                                                              href="http://www.imdb.com/title/tt0910936/">Pineapple Express</a>.
+          </p>
+        {{/card.content}}
+      {{/paper-card}}
+    </div>
+    <div class="flex-gt-xs-33">
+      {{#paper-card as |card|}}
+        {{#card.title}}
+          <h3>
+            Trask
+          </h3>
+        {{/card.title}}
+        {{card.media src="/assets/images/trask.jpg"}}
+        {{#card.content}}
+          <p>
+            Trask is a concierge at the Shoppe. He embodies classic California
+            cannibus culture from the sunny shores of Santa Barbara. His deep
+            knowledge of marijuana helps our patients decide what can best ail them.
+          </p>
+          <p>
+            Outside of work, Trask creates his own rap music, which can be found
+            on his Soundcloud.
           </p>
         {{/card.content}}
       {{/paper-card}}
