@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:craft-cannabus', 'Unit | Route | craft cannabus', {
+moduleFor('route:craft-cannabis', 'Unit | Route | craft cannabus', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });
