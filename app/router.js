@@ -20,6 +20,7 @@ Router.map(function() {
   this.route('faq');
   this.route('intake');
   this.route('staff');
+  this.route('jobs');
 });
 
 export default Router;
