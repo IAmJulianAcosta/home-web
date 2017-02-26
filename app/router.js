@@ -12,7 +12,7 @@ Router.map(function() {
   this.route('our-story');
   this.route('deliveries');
   this.route('clinical-trials');
-  this.route('craft-cannibus');
+  this.route('craft-cannabis');
   this.route('soothing-remedies');
   this.route('specials');
   this.route('patients');
