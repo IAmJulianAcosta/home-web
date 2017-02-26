@@ -1,0 +1,36 @@
+{{#paper-card-content class="flex"}}
+  {{#paper-toolbar}}
+    {{#paper-toolbar-tools}}
+      {{#paper-sidenav-toggle name="left" as |toggleAction|}}
+        {{#paper-button iconButton=true classNames="hide-gt-sm" onClick=(action toggleAction)}}
+          {{paper-icon "menu"}}
+        {{/paper-button}}
+      {{/paper-sidenav-toggle}}
+      <h2>
+        Clinical Trials
+      </h2>
+      <span class="flex"></span>
+    {{/paper-toolbar-tools}}
+  {{/paper-toolbar}}
+
+  <div class="layout-row layout-xs-column">
+    <div class="flex">
+      {{#paper-card as |card|}}
+        {{#card.title as |title|}}
+          <h3>
+            Prospective Careers
+          </h3>
+        {{/card.title}}
+        {{#card.content}}
+          <p>
+            We are looking now.
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScFInhkswG9p9302ZPhvZ8helX1LCa3IHDDmE_Ap1grnJnTPw/viewform"
+               target="_blank">
+              Apply by filling out this form.
+            </a>
+          </p>
+        {{/card.content}}
+      {{/paper-card}}
+    </div>
+  </div>
+{{/paper-card-content}}
