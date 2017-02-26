@@ -57,10 +57,10 @@
          class=(concat "menu-list-item" (if (eq "gallery" currentRouteName) ' active'))}}
         Gallery
       {{/paper-item}}
-      {{#paper-item
-         onClick=(transition-to "faq")
-         class=(concat "menu-list-item" (if (eq "faq" currentRouteName) ' active'))}}
-        FAQ
+      {{#paper-item}}
+        <a href="https://knowledgebase.theapothecaryshoppe.com" target="_blank">
+          Knowledgebase
+        </a>
       {{/paper-item}}
     {{/paper-list}}
   {{/paper-sidenav}}
