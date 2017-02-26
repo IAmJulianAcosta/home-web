@@ -33,6 +33,11 @@
         Deliveries
       {{/paper-item}}
       {{#paper-item
+         onClick=(transition-to "events")
+         class=(concat "menu-list-item" (if (eq "events" currentRouteName) ' active'))}}
+        Events
+      {{/paper-item}}
+      {{#paper-item
          onClick=(transition-to "clinical-trials")
          class=(concat "menu-list-item" (if (eq "clinical-trials" currentRouteName) ' active'))}}
         Clinical Trials

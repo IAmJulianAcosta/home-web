@@ -21,6 +21,7 @@ Router.map(function() {
   this.route('intake');
   this.route('staff');
   this.route('jobs');
+  this.route('events');
 });
 
 export default Router;
