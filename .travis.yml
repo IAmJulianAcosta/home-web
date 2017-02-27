@@ -6,9 +6,9 @@ dist: trusty
 language: node_js
 node_js:
   - '4'
-  directories:
-    - "$HOME/.npm"
-    - "$HOME/.cache"
+directories:
+  - "$HOME/.npm"
+  - "$HOME/.cache"
 addons:
   firefox: 49.0
 before_install:
@@ -25,7 +25,9 @@ before_script:
 script:
   - npm test
 deploy:
-  provider: heroku
-  app: shielded-falls-25739 
-  api_key:
-    secure: "S/53aCYOtC7gHbyKDv94CPwYbFQhKYAE7ZLfMD/sdOZRREwM4SKVjZ8OM0kAuTdRHmezOD1rd1kl6/8B5k76jcfkP6x5AkPlQPqMt2ijpWBl22nBnG0EaKEKicqiyDVcEbM3T7uqqWN+7tBKe+gg8ecFzQo4b+3zQXUuf3bMeRrIUXoeywaErqLANC9kaQU0mlPuRpcTp3y6GM1AjhqK6dHnrmrJm1bPhUAyDacrGpVR86pBOBpQFnxUf2glqqBABpof9UE7SwWLeOd60FS8f+kQUUefYCusYbR9PRKFZvqzeFlfhNq1NdgP8DpZ025xc2cy9vArLR2+rZ6IsSanA1ppQM1v/aHESFtep0xvwl4I+/RAdwTI/HB+eqCLVlYnvdVPipdMrg5em7+ZFVp/ZbIkHg5aMupW/Vt2NVCP5lnv6euzvqOMEYhhy+sKohYUCFFUstj7cidP09PbBr3mEwyC9EP8aUJfEo8vQKrir9EWw9/jmDEanui2EDK+xa/UzFcnbYaDKX+5TgeZAcUGuK6tMJA5CindwhcLt4swsSqWlyxPNNat1uHXSdSlnupiPGV+6j6G/cDP1qIZJtpgrERi1XrdsemFSmURLMt1wiNHfvGTKSEnO/pY1EnQcrUBgdzZPSCphMroxWvMwirUOAxM5cjRzqvYeLo0O8uaRJk="
+  - provider: heroku
+    app: shielded-falls-25739 
+    api_key:
+      secure: "S/53aCYOtC7gHbyKDv94CPwYbFQhKYAE7ZLfMD/sdOZRREwM4SKVjZ8OM0kAuTdRHmezOD1rd1kl6/8B5k76jcfkP6x5AkPlQPqMt2ijpWBl22nBnG0EaKEKicqiyDVcEbM3T7uqqWN+7tBKe+gg8ecFzQo4b+3zQXUuf3bMeRrIUXoeywaErqLANC9kaQU0mlPuRpcTp3y6GM1AjhqK6dHnrmrJm1bPhUAyDacrGpVR86pBOBpQFnxUf2glqqBABpof9UE7SwWLeOd60FS8f+kQUUefYCusYbR9PRKFZvqzeFlfhNq1NdgP8DpZ025xc2cy9vArLR2+rZ6IsSanA1ppQM1v/aHESFtep0xvwl4I+/RAdwTI/HB+eqCLVlYnvdVPipdMrg5em7+ZFVp/ZbIkHg5aMupW/Vt2NVCP5lnv6euzvqOMEYhhy+sKohYUCFFUstj7cidP09PbBr3mEwyC9EP8aUJfEo8vQKrir9EWw9/jmDEanui2EDK+xa/UzFcnbYaDKX+5TgeZAcUGuK6tMJA5CindwhcLt4swsSqWlyxPNNat1uHXSdSlnupiPGV+6j6G/cDP1qIZJtpgrERi1XrdsemFSmURLMt1wiNHfvGTKSEnO/pY1EnQcrUBgdzZPSCphMroxWvMwirUOAxM5cjRzqvYeLo0O8uaRJk="
+    on:
+      branch: master
