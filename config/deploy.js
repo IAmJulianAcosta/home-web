@@ -7,34 +7,18 @@ module.exports = function(deployTarget) {
 
   if (deployTarget === 'staging') {
     ENV.build.environment = 'production';
-    ENV.s3 = {
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-      bucket: 'the-apothecary-shoppe-home-web-staging',
-      region: 'us-east-1'
-    };
-    ENV['s3-index'] = {
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-      bucket: 'the-apothecary-shoppe-home-web-staging',
-      region: 'us-east-1'
-    };
+    ENV['elastic-beanstalk'] = {
+	  bucket: 'the-apothecary-shoppe-home-web-staging',
+	  key: 'fastboot-deploy-info.json'
+	};
   }
 
   if (deployTarget === 'production') {
     ENV.build.environment = 'production';
-    ENV.s3 = {
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-      bucket: 'the-apothecary-shoppe-home-web-production',
-      region: 'us-east-1'
-    };
-    ENV['s3-index'] = {
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-      bucket: 'the-apothecary-shoppe-home-web-production',
-      region: 'us-east-1'
-    };
+	ENV['elastic-beanstalk'] = {
+	  bucket: 'the-apothecary-shoppe-home-web-production',
+	  key: 'fastboot-deploy-info.json'
+	};
   }
   return ENV;
 };
