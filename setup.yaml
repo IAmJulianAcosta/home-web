@@ -4,6 +4,23 @@ Description: >
   This template creates the S3 buckets used to host the staging/production
   versions of the home Ember app.
 
+Mappings:
+  Beanstalk2Route53HostedZoneId:
+    us-east-1:
+      HostedZoneId: Z3DZXE0Q79N41H
+    us-west-1:
+      HostedZoneId: Z1M58G0W56PQJA
+    us-west-2:
+      HostedZoneId: Z33MTJ483KN6FU
+    eu-west-1:
+      HostedZoneId: Z3NF1Z3NOM5OY2
+    ap-northeast-1:
+      HostedZoneId: Z2YN17T5R711GT
+    ap-southeast-1:
+      HostedZoneId: Z1WI8VXHPB1R38
+    sa-east-1:
+      HostedZoneId: Z2ES78Y61JGQKS
+
 Parameters:
   DomainName:
     Description: Naked Domain, this needs to be verified on Route 53 first.
@@ -91,64 +108,94 @@ Resources:
         IndexDocument: index.html
         ErrorDocument: index.html
 
-  StagingCDN:
-    Type: AWS::CloudFront::Distribution
+  FastbootBucket:
+    Type: AWS::S3::Bucket
     Properties:
-      DistributionConfig:
-        Aliases:
-          - !Sub staging.${DomainName}
-        Comment: !Sub staging.${DomainName}
-        Origins:
-        - DomainName: !Sub ${StagingS3Bucket}.s3-website-${AWS::Region}.amazonaws.com
-          Id: s3origin
-          CustomOriginConfig:
-            OriginProtocolPolicy: http-only
-        DefaultCacheBehavior:
-          AllowedMethods:
-            - HEAD
-            - GET
-          ForwardedValues:
-            QueryString: false
-            Cookies:
-              Forward: none
-          TargetOriginId: s3origin
-          ViewerProtocolPolicy: redirect-to-https
-        Enabled: true
-        PriceClass: PriceClass_All
-        ViewerCertificate:
-          AcmCertificateArn: !Ref StagingSSLCertificate
-          SslSupportMethod: sni-only
-          MinimumProtocolVersion: TLSv1
+      AccessControl: PublicRead
+      BucketName: FastbootBucket
 
-  ProductionCDN:
-    Type: AWS::CloudFront::Distribution
+  Fastboot:
+    Type: AWS::ElasticBeanstalk::Application
     Properties:
-      DistributionConfig:
-        Aliases:
-          - !Sub www.${DomainName}
-        Comment: !Sub www.${DomainName}
-        Origins:
-          - DomainName: !Sub ${ProductionS3Bucket}.s3-website-${AWS::Region}.amazonaws.com
-            Id: s3origin
-            CustomOriginConfig:
-              OriginProtocolPolicy: http-only
-        DefaultCacheBehavior:
-          AllowedMethods:
-            - HEAD
-            - GET
-          ForwardedValues:
-            QueryString: false
-            Cookies:
-              Forward: none
-          TargetOriginId: s3origin
-          ViewerProtocolPolicy: redirect-to-https
-        Enabled: true
-        PriceClass: PriceClass_All
-        ViewerCertificate:
-          AcmCertificateArn: !Ref ProductionSSLCertificate
-          SslSupportMethod: sni-only
-          MinimumProtocolVersion: TLSv1
+      Description: Production fastboot
 
+  FastbootVersion:
+    Type: AWS::ElasticBeanstalk::ApplicationVersion
+    Properties:
+      ApplicationName:
+        Ref: Fastboot
+      Description: Fastboot version
+      SourceBundle:
+        S3Bucket: FastbootBucket
+        S3Key: fastboot-aws.zip
+
+  ProductionConfigurationTemplate:
+    Type: AWS::ElasticBeanstalk::ConfigurationTemplate
+    Properties:
+      ApplicationName:
+        Ref: Fastboot
+      Description: Configuration for Production Fastboot
+      OptionSettings:
+      - Namespace: aws:autoscaling:asg
+        OptionName: MinSize
+        Value: '1'
+      - Namespace: aws:autoscaling:asg
+        OptionName: MaxSize
+        Value: '2'
+      - Namespace: aws:elasticbeanstalk:environment
+        OptionName: EnvironmentType
+        Value: LoadBalanced
+      - Namespace: aws:elasticbeanstalk:application:environment
+        OptionName: FASTBOOT_S3_BUCKET
+        Value: ProductionS3Bucket
+      - Namespace: aws:elasticbeanstalk:application:environment
+        OptionName: FASTBOOT_S3_KEY
+        Value: fastboot-deploy-info.json
+      SolutionStackName: 64bit Amazon Linux 2016.09 v4.0.0 running Node.js
+
+  StagingConfigurationTemplate:
+    Type: AWS::ElasticBeanstalk::ConfigurationTemplate
+    Properties:
+      ApplicationName:
+        Ref: Fastboot
+      Description: Configuration for Staging Fastboot
+      OptionSettings:
+      - Namespace: aws:elasticbeanstalk:environment
+        OptionName: EnvironmentType
+        Value: SingleInstance
+      - Namespace: aws:elasticbeanstalk:application:environment
+        OptionName: FASTBOOT_S3_BUCKET
+        Value: StagingS3Bucket
+      - Namespace: aws:elasticbeanstalk:application:environment
+        OptionName: FASTBOOT_S3_KEY
+        Value: fastboot-deploy-info.json
+      SolutionStackName: 64bit Amazon Linux 2016.09 v4.0.0 running Node.js
+
+  ProductionEnvironment:
+    Type: AWS::ElasticBeanstalk::Environment
+    Properties:
+      ApplicationName:
+        Ref: Fastboot
+      EnvironmentName: "production"
+      Description: AWS ElasticBeanstalk Sample Environment
+      TemplateName:
+        Ref: ProductionConfigurationTemplate
+      VersionLabel:
+        Ref: FastbootVersion
+
+  StagingEnvironment:
+    Type: AWS::ElasticBeanstalk::Environment
+    Properties:
+      ApplicationName:
+        Ref: Fastboot
+      EnvironmentName: "staging"
+      Description: AWS ElasticBeanstalk Sample Environment
+      TemplateName:
+        Ref: StagingConfigurationTemplate
+      VersionLabel:
+        Ref: FastbootVersion
+
+  #https://blog.jayway.com/2016/06/02/route53-configuration-elastic-beanstalk/
   StagingRoute53Record:
     Type: AWS::Route53::RecordSetGroup
     Properties:
@@ -157,9 +204,8 @@ Resources:
       - Name: !Sub staging.${DomainName}
         Type: A
         AliasTarget:
-          # Magic AWS number:  For CloudFront, it's Z2FDTNDATAQYW2.
-          HostedZoneId: Z2FDTNDATAQYW2
-          DNSName: !GetAtt StagingCDN.DomainName
+          HostedZoneId: !FindInMap [ Beanstalk2Route53HostedZoneId, !Ref "AWS::Region", HostedZoneId ]
+          DNSName: !GetAtt StagingEnvironment.EndpointURL
 
   ProductionRoute53Record:
     Type: AWS::Route53::RecordSetGroup
@@ -169,9 +215,8 @@ Resources:
       - Name: !Sub www.${DomainName}
         Type: A
         AliasTarget:
-          # Magic AWS number:  For CloudFront, it's Z2FDTNDATAQYW2.
-          HostedZoneId: Z2FDTNDATAQYW2
-          DNSName: !GetAtt ProductionCDN.DomainName
+          HostedZoneId: !FindInMap [ Beanstalk2Route53HostedZoneId, !Ref "AWS::Region", HostedZoneId ]
+          DNSName: !GetAtt ProductionEnvironment.EndpointURL
 
 Outputs:
   CIUser:
